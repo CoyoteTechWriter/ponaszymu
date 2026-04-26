@@ -187,17 +187,20 @@ h1 {
   margin: 1.1rem auto 0;
   width: 100%;
   max-width: 660px;
+  aspect-ratio: 16 / 10;
   border-radius: 0.95rem;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.35);
   box-shadow: 0 14px 30px rgba(8, 24, 48, 0.35);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .hero-photo img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .saying-box {
