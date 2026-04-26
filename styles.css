@@ -183,6 +183,23 @@ h1 {
   color: rgba(255, 255, 255, 0.9);
 }
 
+.hero-photo {
+  margin: 1.1rem auto 0;
+  width: 100%;
+  max-width: 660px;
+  border-radius: 0.95rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 14px 30px rgba(8, 24, 48, 0.35);
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 .saying-box {
   margin-top: 1.2rem;
   margin-left: auto;

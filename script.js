@@ -118,6 +118,27 @@ const sayings = [
 
 const quoteNode = document.getElementById("saying-quote");
 const explanationNode = document.getElementById("saying-explanation");
+const heroPhotoNode = document.getElementById("hero-random-photo");
+
+// Add more filenames here when you drop new images into the project root.
+const heroPhotos = [
+  {
+    src: "slask.jpg",
+    alt: "Industrialny krajobraz Górnego Śląska z elementami kolejnictwa",
+  },
+  {
+    src: "slask2.jpg",
+    alt: "Krajobraz przemysłowy Górnego Śląska",
+  },
+  {
+    src: "slask3.jpg",
+    alt: "Dziedzictwo przemysłowe Górnego Śląska",
+  },
+  {
+    src: "slask4.jpg",
+    alt: "Śląska architektura i klimat regionu",
+  },
+];
 
 if (quoteNode && explanationNode && sayings.length > 0) {
   const randomIndex = Math.floor(Math.random() * sayings.length);
@@ -125,4 +146,12 @@ if (quoteNode && explanationNode && sayings.length > 0) {
 
   quoteNode.textContent = `„${selected.quote}”`;
   explanationNode.textContent = selected.explanation;
+}
+
+if (heroPhotoNode && heroPhotos.length > 0) {
+  const randomIndex = Math.floor(Math.random() * heroPhotos.length);
+  const selected = heroPhotos[randomIndex];
+
+  heroPhotoNode.src = selected.src;
+  heroPhotoNode.alt = selected.alt;
 }
