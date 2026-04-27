@@ -73,17 +73,18 @@ body {
   );
 }
 
-.hero .container {
-  position: relative;
-  z-index: 1;
-}
-
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
   position: relative;
+  z-index: 40;
+}
+
+.hero-content.container {
+  position: relative;
+  z-index: 0;
 }
 
 .logo {
@@ -110,9 +111,10 @@ body {
   list-style: none;
   border-radius: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(15, 38, 66, 0.92);
-  backdrop-filter: blur(5px);
-  z-index: 20;
+  background: #14384d;
+  backdrop-filter: none;
+  box-shadow: 0 14px 32px rgba(0, 18, 32, 0.55);
+  z-index: 30;
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
