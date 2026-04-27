@@ -1,14 +1,14 @@
 :root {
-  --bg: #f8fbff;
+  --bg: #f6f7f8;
   --surface: #ffffff;
-  --text: #10223a;
-  --muted: #3f4f63;
-  --primary: #1f5fa8;
-  --primary-dark: #174a82;
-  --accent: #f5c400;
-  --accent-soft: #ffe278;
-  --border: #d5dfeb;
-  --shadow: 0 18px 45px rgba(18, 44, 83, 0.12);
+  --text: #2b2f36;
+  --muted: #525861;
+  --primary: #1c9bc7;
+  --primary-dark: #157ea3;
+  --accent: #d8c63a;
+  --accent-soft: #79bb50;
+  --border: #d8dce2;
+  --shadow: 0 16px 40px rgba(43, 47, 54, 0.12);
 }
 
 * {
@@ -23,7 +23,9 @@ body {
   margin: 0;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   color: var(--text);
-  background: var(--bg);
+  background:
+    linear-gradient(140deg, rgba(28, 155, 199, 0.95), rgba(21, 126, 163, 0.94)),
+    linear-gradient(180deg, #178db6 0%, #1c9bc7 100%);
   line-height: 1.6;
 }
 
@@ -36,8 +38,8 @@ body {
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(135deg, rgba(31, 95, 168, 0.98), rgba(27, 78, 138, 0.94)),
-    linear-gradient(180deg, #16559a 0%, #1f5fa8 100%);
+    linear-gradient(140deg, rgba(28, 155, 199, 0.95), rgba(21, 126, 163, 0.94)),
+    linear-gradient(180deg, #178db6 0%, #1c9bc7 100%);
   color: #fff;
   min-height: 100svh;
   padding-bottom: 3.2rem;
@@ -50,8 +52,8 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 20%, rgba(255, 226, 120, 0.28), transparent 42%),
-    radial-gradient(circle at 80% 10%, rgba(255, 226, 120, 0.2), transparent 35%);
+    radial-gradient(circle at 20% 20%, rgba(216, 198, 58, 0.26), transparent 42%),
+    radial-gradient(circle at 80% 10%, rgba(121, 187, 80, 0.22), transparent 35%);
   pointer-events: none;
 }
 
@@ -66,8 +68,8 @@ body {
     90deg,
     var(--accent) 0,
     var(--accent) 42px,
-    #f8d742 42px,
-    #f8d742 84px
+    var(--accent-soft) 42px,
+    var(--accent-soft) 84px
   );
 }
 
@@ -141,24 +143,35 @@ body {
   height: 100%;
 }
 
+.hero-brand-logo {
+  display: block;
+  width: min(320px, 84%);
+  height: auto;
+  margin: 0 auto 0.8rem;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+}
+
 .accent-ring {
   fill: none;
-  stroke: var(--accent);
+  stroke: var(--accent-soft);
   stroke-width: 10;
 }
 
 .accent-core {
-  fill: rgba(255, 255, 255, 0.12);
+  fill: rgba(255, 255, 255, 0.16);
   stroke: rgba(255, 255, 255, 0.45);
   stroke-width: 1.5;
 }
 
 .accent-tower {
-  fill: #ffe278;
+  fill: var(--accent);
 }
 
 .accent-hammer {
-  fill: #ffffff;
+  fill: #2b2f36;
 }
 
 .eyebrow {
@@ -237,7 +250,7 @@ h1 {
   font-size: 0.82rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--accent-soft);
+  color: #d5f3be;
   font-weight: 700;
 }
 
@@ -272,12 +285,12 @@ h1 {
 
 .btn.primary {
   background: var(--accent);
-  color: #122b4b;
-  box-shadow: 0 10px 25px rgba(8, 26, 51, 0.25);
+  color: #2b2f36;
+  box-shadow: 0 10px 22px rgba(43, 47, 54, 0.22);
 }
 
 .btn.primary:hover {
-  background: #ffd84b;
+  background: #e9d958;
 }
 
 .btn.ghost {
@@ -291,19 +304,28 @@ h1 {
 }
 
 .section {
+  position: relative;
   padding: 3.5rem 0;
+  background: transparent;
+  color: #fff;
+}
+
+.section + .section {
+  border-top: 1px solid rgba(0, 0, 0, 0.55);
 }
 
 .section.alt {
-  background: linear-gradient(180deg, #edf4ff 0%, #e8f1ff 100%);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: #fff;
+  border-top: 0;
+  border-bottom: 0;
 }
 
 h2 {
   margin-top: 0;
   margin-bottom: 0.8rem;
   font-size: 1.7rem;
+  color: #ffffff;
 }
 
 .cards {
@@ -318,15 +340,35 @@ h2 {
 .cards li,
 .panel,
 .registry {
-  background: var(--surface);
-  border: 1px solid var(--border);
+  background:
+    linear-gradient(180deg, rgba(10, 40, 68, 0.26), rgba(10, 40, 68, 0.16));
+  border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 0.9rem;
   padding: 1.05rem;
-  box-shadow: var(--shadow);
+  box-shadow: 0 14px 32px rgba(6, 26, 52, 0.2);
+  color: #fff;
 }
 
 .cards li {
-  border-left: 6px solid var(--accent);
+  border-left: 6px solid var(--accent-soft);
+}
+
+.panel {
+  border-top: 4px solid rgba(216, 198, 58, 0.85);
+}
+
+.registry {
+  border-left: 6px solid rgba(121, 187, 80, 0.85);
+}
+
+.section p,
+.section li,
+.panel h3 {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.panel h3 {
+  color: #fff;
 }
 
 .grid-2 {
@@ -337,7 +379,7 @@ h2 {
 
 .panel h3 {
   margin-top: 0;
-  color: var(--primary-dark);
+  color: #ffffff;
 }
 
 .panel ul {
@@ -346,11 +388,11 @@ h2 {
 
 .footer {
   background:
-    linear-gradient(180deg, rgba(16, 34, 58, 0.96), rgba(13, 29, 49, 0.98)),
-    linear-gradient(90deg, #183d69, #0f2947);
-  color: #d7e4f8;
+    linear-gradient(180deg, rgba(43, 47, 54, 0.97), rgba(36, 40, 46, 0.98)),
+    linear-gradient(90deg, #2b2f36, #25292f);
+  color: #e4e8ee;
   padding: 3rem 0;
-  border-top: 6px solid var(--accent);
+  border-top: 6px solid var(--accent-soft);
 }
 
 .footer h2 {
@@ -358,7 +400,7 @@ h2 {
 }
 
 .footer a {
-  color: #ffe278;
+  color: #f0df5f;
 }
 
 .muted {
@@ -408,5 +450,9 @@ h2 {
     width: 88px;
     height: 88px;
     margin-bottom: 0.75rem;
+  }
+
+  .hero-brand-logo {
+    width: min(280px, 92%);
   }
 }
