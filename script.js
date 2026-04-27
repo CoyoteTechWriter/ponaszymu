@@ -164,9 +164,32 @@ if (menuToggleNode && siteMenuNode) {
     menuToggleNode.setAttribute("aria-expanded", "false");
   };
 
-  menuToggleNode.addEventListener("click", () => {
+  const toggleMenu = () => {
     const isOpen = siteMenuNode.classList.toggle("is-open");
     menuToggleNode.setAttribute("aria-expanded", String(isOpen));
+  };
+
+  let suppressClickFromTouch = false;
+
+  menuToggleNode.addEventListener(
+    "touchend",
+    (event) => {
+      event.preventDefault();
+      suppressClickFromTouch = true;
+      toggleMenu();
+      window.setTimeout(() => {
+        suppressClickFromTouch = false;
+      }, 450);
+    },
+    { passive: false },
+  );
+
+  menuToggleNode.addEventListener("click", (event) => {
+    if (suppressClickFromTouch) {
+      event.preventDefault();
+      return;
+    }
+    toggleMenu();
   });
 
   siteMenuNode.querySelectorAll("a").forEach((link) => {

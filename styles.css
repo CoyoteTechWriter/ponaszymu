@@ -79,7 +79,9 @@ body {
   align-items: center;
   padding: 1rem 0;
   position: relative;
-  z-index: 40;
+  z-index: 9999;
+  transform: translateZ(0);
+  isolation: isolate;
 }
 
 .hero-content.container {
@@ -88,9 +90,10 @@ body {
 }
 
 .logo {
-  flex: 1;
+  flex: 0 1 auto;
+  max-width: calc(100% - 3.75rem);
   min-width: 0;
-  margin-right: 0.75rem;
+  margin-right: auto;
   font-weight: 800;
   letter-spacing: 0.03em;
   color: #fff;
@@ -114,10 +117,12 @@ body {
   background: #14384d;
   backdrop-filter: none;
   box-shadow: 0 14px 32px rgba(0, 18, 32, 0.55);
-  z-index: 30;
+  z-index: 10001;
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
+  touch-action: manipulation;
+  -webkit-overflow-scrolling: touch;
 }
 
 .menu.is-open {
@@ -131,6 +136,8 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s ease;
+  touch-action: manipulation;
+  cursor: pointer;
 }
 
 .menu a:hover {
@@ -154,9 +161,15 @@ body {
   color: #fff;
   border-radius: 0.55rem;
   padding: 0.25rem 0.6rem;
+  min-height: 44px;
+  min-width: 44px;
   font-size: 1.2rem;
   line-height: 1;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 10002;
 }
 
 .hero-content {
@@ -464,19 +477,36 @@ h2 {
 }
 
 @media (max-width: 860px) {
+  .nav.container {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    padding-top: max(0.35rem, env(safe-area-inset-top, 0px));
+    padding-bottom: 0.65rem;
+    padding-inline: max(0.25rem, env(safe-area-inset-left, 0px))
+      max(0.25rem, env(safe-area-inset-right, 0px));
+    margin-bottom: 0.25rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: min(1100px, 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(23, 141, 182, 0.98) 0%,
+      rgba(23, 141, 182, 0.92) 85%,
+      rgba(23, 141, 182, 0) 100%
+    );
+  }
+
+  .hero-brand-logo {
+    filter: none;
+    width: min(280px, 92%);
+  }
+
   .hero-photo-caption {
     text-align: right;
     font-size: 0.8rem;
     padding-inline-end: 0.85rem;
     margin-inline-end: 0.35rem;
-  }
-
-  .nav.container {
-    padding-inline: max(0.25rem, env(safe-area-inset-left, 0px))
-      max(0.25rem, env(safe-area-inset-right, 0px));
-    box-sizing: border-box;
-    width: 100%;
-    max-width: min(1100px, 100%);
   }
 
   .cards,
@@ -517,9 +547,5 @@ h2 {
     width: 88px;
     height: 88px;
     margin-bottom: 0.75rem;
-  }
-
-  .hero-brand-logo {
-    width: min(280px, 92%);
   }
 }
