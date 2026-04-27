@@ -119,6 +119,8 @@ const sayings = [
 const quoteNode = document.getElementById("saying-quote");
 const explanationNode = document.getElementById("saying-explanation");
 const heroPhotoNode = document.getElementById("hero-random-photo");
+const menuToggleNode = document.getElementById("menu-toggle");
+const siteMenuNode = document.getElementById("site-menu");
 
 // Add more filenames here when you drop new images into the project root.
 const heroPhotos = [
@@ -154,4 +156,26 @@ if (heroPhotoNode && heroPhotos.length > 0) {
 
   heroPhotoNode.src = selected.src;
   heroPhotoNode.alt = selected.alt;
+}
+
+if (menuToggleNode && siteMenuNode) {
+  const closeMenu = () => {
+    siteMenuNode.classList.remove("is-open");
+    menuToggleNode.setAttribute("aria-expanded", "false");
+  };
+
+  menuToggleNode.addEventListener("click", () => {
+    const isOpen = siteMenuNode.classList.toggle("is-open");
+    menuToggleNode.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  siteMenuNode.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
 }
