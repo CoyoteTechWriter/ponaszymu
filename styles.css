@@ -36,7 +36,7 @@ body {
 
 .hero {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   background:
     linear-gradient(140deg, rgba(28, 155, 199, 0.95), rgba(21, 126, 163, 0.94)),
     linear-gradient(180deg, #178db6 0%, #1c9bc7 100%);
@@ -87,6 +87,9 @@ body {
 }
 
 .logo {
+  flex: 1;
+  min-width: 0;
+  margin-right: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.03em;
   color: #fff;
@@ -110,6 +113,9 @@ body {
   background: rgba(15, 38, 66, 0.92);
   backdrop-filter: blur(5px);
   z-index: 20;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 
 .menu.is-open {
@@ -137,6 +143,7 @@ body {
 }
 
 .menu-toggle {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -266,6 +273,8 @@ h1 {
   margin-top: 0.45rem;
   max-width: 100%;
   text-align: right;
+  padding-inline-end: 0.65rem;
+  margin-inline-end: 0.2rem;
   font-size: 0.86rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.96);
@@ -454,9 +463,18 @@ h2 {
 
 @media (max-width: 860px) {
   .hero-photo-caption {
-    text-align: center;
+    text-align: right;
     font-size: 0.8rem;
-    padding-inline: 0.35rem;
+    padding-inline-end: 0.85rem;
+    margin-inline-end: 0.35rem;
+  }
+
+  .nav.container {
+    padding-inline: max(0.25rem, env(safe-area-inset-left, 0px))
+      max(0.25rem, env(safe-area-inset-right, 0px));
+    box-sizing: border-box;
+    width: 100%;
+    max-width: min(1100px, 100%);
   }
 
   .cards,
